@@ -16,7 +16,13 @@ const app = express();
 // <===Middlewares===>
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+  origin: [process.env.FRONTEND_URL ,
+  "https://befirst-hr-consultancy.vercel.app/",
+  "http://localhost:3000",
+  ],
+  credentials: true
+}));
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(cookieParser());
